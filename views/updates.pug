@@ -1,0 +1,47 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        .container
+            h1 Create New Custom Object
+            
+            .nav-links
+                a.btn.btn-secondary(href="/") Return to the homepage
+            
+            if error
+                .error-message
+                    p= error
+            
+            form.create-form(action="/update-cobj", method="POST")
+                .form-group
+                    label(for="name") Name *
+                    input#name(
+                        type="text"
+                        name="name"
+                        required
+                        placeholder="Enter name"
+                    )
+                
+                .form-group
+                    label(for="author") Author
+                    textarea#author(
+                        name="author"
+                        rows="4"
+                        placeholder="Enter author"
+                    )
+                
+                .form-group
+                    label(for="genre") Genre
+                    input#genre(
+                        type="text"
+                        name="genre"
+                        placeholder="Enter genre"
+                    )
+                
+                .form-actions
+                    button.btn.btn-primary(type="submit") Create Custom Object
+                    a.btn.btn-secondary(href="/") Cancel

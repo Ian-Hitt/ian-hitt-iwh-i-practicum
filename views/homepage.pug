@@ -1,0 +1,41 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        .container
+            h1 Custom Objects Dashboard
+            
+            .nav-links
+                a.btn.btn-primary(href="/update-cobj") Add to this table
+            
+            if error
+                .error-message
+                    p= error
+            
+            if customObjects && customObjects.length > 0
+                table.data-table
+                    thead
+                        tr
+                            th ID
+                            th Name
+                            th Author
+                            th Genre
+                            th Created At
+                            th Updated At
+                    tbody
+                        each obj in customObjects
+                            tr
+                                td= obj.id
+                                td= obj.name
+                                td= obj.author
+                                td= obj.genre
+                                td= new Date(obj.createdAt).toLocaleDateString()
+                                td= new Date(obj.updatedAt).toLocaleDateString()
+            else
+                .empty-state
+                    p No custom objects found. 
+                    a(href="/update-cobj") Create your first custom object!
